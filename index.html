@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Чат Гимназии 13</title>
+  <meta name="theme-color" content="#141C26">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" href="icons/icon-192.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1 class="logo">Гимназия</h1>
+  <p class="tagline">Общий чат для всех</p>
+  <div class="header-actions">
+    <button id="changeNameBtn" class="change-name-btn" type="button">Сменить имя</button>
+    <button id="notifyBtn" class="change-name-btn" type="button">Уведомления: выкл</button>
+  </div>
+</header>
+
+  <main class="container">
+    <div id="messagesList" class="messages-list">
+      <p class="empty-state">Сообщений пока нет. Будь первым!</p>
+    </div>
+  </main>
+
+  <button id="composeBtn" class="compose-bar" type="button">
+    <span class="compose-bar-text">Написать сообщение…</span>
+    <span class="compose-bar-action">Написать</span>
+  </button>
+
+  <div id="registerModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="registerModalClose" class="modal-close">&times;</button>
+      <h3>Как к тебе обращаться?</h3>
+      <input type="text" id="nameInput" placeholder="Введи своё имя" maxlength="30">
+      <button id="continueWithNameBtn" class="btn-primary">Продолжить</button>
+      <button id="continueIncognitoBtn" class="btn-secondary">Зайти как Аноним</button>
+    </div>
+  </div>
+
+  <div id="composeModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="composeModalClose" class="modal-close">&times;</button>
+      <h3>Новое сообщение</h3>
+      <textarea id="messageText" placeholder="Напиши что-нибудь..." maxlength="500"></textarea>
+
+      <label for="messagePhotoInput" class="btn-secondary upload-btn">Прикрепить фото</label>
+      <input type="file" id="messagePhotoInput" accept="image/*" hidden>
+
+      <button id="sendMessageBtn" class="btn-primary">Отправить</button>
+    </div>
+  </div>
+  <div id="lightbox" class="modal hidden">
+    <button id="lightboxClose" class="modal-close lightbox-close">&times;</button>
+    <img id="lightboxImg" src="" alt="Фото">
+  </div>
+
+        <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-messaging-compat.js"></script>
+        <script src="firebase-config.js"></script>
+  <script src="chat.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+  </script>
+</body>
+</html>

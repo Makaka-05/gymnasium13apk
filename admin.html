@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Чат Гимназии 13 — Админ</title>
+  <meta name="theme-color" content="#141C26">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="back-link">← На главную</a>
+    <h1 class="logo">Админ-панель</h1>
+  </header>
+
+  <main class="container">
+
+    <div id="loginView">
+      <div class="password-gate">
+        <p class="field-label">Email</p>
+        <input type="email" id="adminEmail" placeholder="твой@email.com">
+        <p class="field-label">Пароль</p>
+        <input type="password" id="adminPassword" placeholder="Пароль">
+        <button id="loginBtn" class="btn-primary">Войти</button>
+        <p id="loginError" class="error-text hidden">Неверный email или пароль</p>
+      </div>
+    </div>
+
+    <div id="adminView" class="hidden">
+      <div class="toolbar">
+        <h2>Все сообщения</h2>
+        <button id="logoutBtn" class="btn-secondary btn-auto">Выйти</button>
+      </div>
+
+        <div class="toolbar">
+    <h2>Забаненные устройства</h2>
+    </div>
+
+    <div id="bannedList" class="messages-list">
+    <p class="empty-state">Загрузка...</p>
+    </div>
+
+      <div id="adminMessagesList" class="messages-list">
+        <p class="empty-state">Загрузка...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+  <script src="firebase-config.js"></script>
+
+  <script src="admin.js"></script>
+</body>
+</html>
